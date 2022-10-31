@@ -1,9 +1,9 @@
 Buying,Maintenance,Doors,Person,Lugage_boot,Safety,Evaluation
-Low,med,3,More,big,med,good
-Low,med,3,More,big,high,vgood
-Low,med,4,2,small,low,unacc
-Low,med,4,2,small,med,unacc
-Low,med,4,More,big,high,vgood
+Med,med,3,More,big,med,good
+Med,med,3,More,big,high,vgood
+Med,med,4,2,small,low,unacc
+Med,med,4,2,small,med,unacc
+Med,med,4,More,big,high,vgood
 Low,med,more,2,small,low,unacc
 Low,med,more,4,small,med,acc
 Low,med,more,4,small,high,good
