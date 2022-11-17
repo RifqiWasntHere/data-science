@@ -14,10 +14,16 @@ def parent(csvFile):
   return giniD
 
 def giniIndex(variable):
+  global total
 
   hitungLabel.hitungLabel(variable)
 
   unacc, acc, good, vgood = hitungLabel.a, hitungLabel.b, hitungLabel.c, hitungLabel.d
+  total = hitungLabel.total
 
-  giniDex = 1 - (unacc/len(variable))**2 - (acc/len(variable))**2 - (good/len(variable))**2 - (vgood/len(variable))**2
+  if ( total == 0 ):
+    giniDex = 0
+  else:
+    giniDex = 1 - (unacc/len(variable))**2 - (acc/len(variable))**2 - (good/len(variable))**2 - (vgood/len(variable))**2
+  
   return giniDex
