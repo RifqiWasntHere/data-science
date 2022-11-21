@@ -21,10 +21,17 @@ def hitungLabelRow(column, row):
   return total
 
 def hitungMedianGini(column):
-  median = (column[3]/16)*column[0] + (column[4]+column[5]/16)*(column[1]+column[2])
+  median = (column[3]/16)*column[0] + (((column[4]+column[5])/2)/16)*(column[1]+column[2])
   
   return median
 
+def hitungGain(median):
+  gini = 0.71875
+  gain =  gini - median
+
+  return gain
+
+print("\n", "="*10,"Iterasi Pertama", "="*10)
 #List/Array Gini atribut
 Buying = [hitungImpurity("Buying", "Low"), hitungImpurity("Buying", "Med"),  hitungImpurity("Buying", "High"), hitungLabelRow("Buying", "Low"), hitungLabelRow("Buying", "Med"),  hitungLabelRow("Buying", "High")]
 Maintenance = [hitungImpurity("Maintenance", "Low"), hitungImpurity("Maintenance", "Med"), hitungImpurity("Maintenance", "High"), hitungLabelRow("Maintenance", "Low"), hitungLabelRow("Maintenance", "Med"), hitungLabelRow("Maintenance", "High")]
@@ -35,28 +42,43 @@ Safety = [hitungImpurity("Safety", "Low"), hitungImpurity("Safety", "Med"), hitu
 
 print(
   "Impurity Buying \\ Low -->", Buying[0],
-  "\nImpurity Buying \\ MedHigh -->", Buying[1] + Buying[2],
+  "\nImpurity Buying \\ MedHigh -->", (Buying[1] + Buying[2])/2,
   "\nMedian Gini Buying -->", hitungMedianGini(Buying),
+  "\nGain Buying -->", hitungGain(hitungMedianGini(Buying)),
 
   "\n\nImpurity Maintenance \\ Low -->", Maintenance[0],
-  "\nImpurity Maintenance \\ MedHigh -->", Maintenance[1] + Maintenance[2],
+  "\nImpurity Maintenance \\ MedHigh -->", (Maintenance[1] + Maintenance[2])/2,
   "\nMedian Gini Maintenance -->", hitungMedianGini(Maintenance),
+  "\nGain Maintenance -->", hitungGain(hitungMedianGini(Maintenance)),
 
   "\n\nImpurity Doors \\ 3 -->", Doors[0],
-  "\nImpurity Doors \\ 4More -->", Doors[1] + Doors[2],
+  "\nImpurity Doors \\ 4More -->", (Doors[1] + Doors[2])/2,
   "\nMedian Gini Doors -->", hitungMedianGini(Doors),
+  "\nGain Doors -->", hitungGain(hitungMedianGini(Doors)),
 
   "\n\nImpurity Person \\ 2 -->", Person[0],
-  "\nImpurity Person \\ 4More -->", Person[1] + Person[2],
+  "\nImpurity Person \\ 4More -->", (Person[1] + Person[2])/2,
   "\nMedian Gini Person -->", hitungMedianGini(Person),
+  "\nGain Person -->", hitungGain(hitungMedianGini(Person)), 
 
   "\n\nImpurity Lugage_boot \\ Small -->", Lugage_boot[0],
-  "\nImpurity Lugage_boot \\ MedBig -->", Lugage_boot[1] + Lugage_boot[2],
-   "\nMedian Gini Lugage_boot -->", hitungMedianGini(Lugage_boot),
+  "\nImpurity Lugage_boot \\ MedBig -->", (Lugage_boot[1] + Lugage_boot[2])/2,
+  "\nMedian Gini Lugage_boot -->", hitungMedianGini(Lugage_boot),
+  "\nGain Lugage -->", hitungGain(hitungMedianGini(Lugage_boot)), 
 
   "\n\nImpurity Safety \\ Low -->", Safety[0],
-  "\nImpurity Safety \\ MedHigh -->", Safety[1] + Safety[2],
-    "\nMedian Gini Safety -->", hitungMedianGini(Safety),
-
+  "\nImpurity Safety \\ MedHigh -->", (Safety[1] + Safety[2])/2,
+  "\nMedian Gini Safety -->", hitungMedianGini(Safety),
+  "\nGain Safety -->", hitungGain(hitungMedianGini(Safety)),
   )
 
+# Validasi data Safety Med & High
+# print("Safety||Med -->", (hitungImpurity("Safety", "Med"),"\nSafety||High -->",hitungImpurity("Safety", "High")))
+# print("\n", "="*10,"Iterasi Kedua", "="*10)
+
+# filter = data["Safety"]=="Low"
+
+# print("\nData Safety yang bernilai low : ")
+# print(data.loc[filter, "Evaluation"].tolist())
+
+# print("\n", "="*10,"Iterasi Ketiga", "="*10)
