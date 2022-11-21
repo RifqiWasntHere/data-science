@@ -1,12 +1,39 @@
 from treelib import Tree
 
-tree = Tree()
+def iterasi1():
+  tree = Tree()
+  node = tree.create_node
+  node("Root", "root")
+  node("Safety [Low]", "left", parent = "root")
+  node("Safety [Med,High]", "right", parent = "root")
+  tree.show()
 
-tree.create_node("Safety [low] unacc", "parent1")  # No parent means its the root node
-tree.create_node("Jane",  "jane"   , parent="parent1")
-tree.create_node("Safety [med] acc",  "bill"   , parent="parent1")
-tree.create_node("Diane", "diane"  , parent="bill")
-tree.create_node("Mary",  "mary"   , parent="diane")
-tree.create_node("Mark",  "mark"   , parent="jane")
+def iterasi2():
+  tree = Tree()
+  node = tree.create_node
+  node("Root", "root")
+  node("Safety [Low] unacc", "left", parent = "root")
+  node("Safety [Med,High]", "right", parent = "root")
+  tree.show()
 
-tree.show()
+def iterasi3():
+  tree = Tree()
+  node = tree.create_node
+  node("Root", "root")
+  node("Safety [Low] unacc", "left", parent = "root")
+  node("Safety [Med,High]", "right", parent = "root")
+  node("Safety [Med]", "left2", parent ="right")
+  node("Safety [High]", "right2", parent ="right")
+  tree.show()
+
+def iterasi4():
+  tree = Tree()
+  node = tree.create_node
+  node("Root", "root")
+  node("Safety [Low] unacc", "left", parent = "root")
+  node("Safety [Med,High]", "right", parent = "root")
+  node("Safety [Med]", "left2", parent ="right")
+  node("Safety [High]", "right2", parent ="right")
+  node("Lugage [Small]", "left3", parent ="right2")
+  node("Lugage [Med,High]", "right3", parent ="right2")
+  tree.show()
