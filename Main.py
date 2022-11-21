@@ -20,8 +20,21 @@ def hitungLabelRow(column, row):
   
   return total
 
+def hitungDuaLabelRow(column1, row1, column2, row2):
+  filter = data[column1]==row1
+  hasil = data.loc[filter, "Evaluation"].tolist()
+  hitungLabel.hitungLabel(hasil)
+  total1 = hitungLabel.total
+
+  filter = data[column2]==row2
+  hasil = data.loc[filter, "Evaluation"].tolist()
+  hitungLabel.hitungLabel(hasil)
+  total2 = hitungLabel.total + total1
+
+  return total2
+
 def hitungMedianGini(column):
-  median = (column[3]/16)*column[0] + (((column[4]+column[5])/2)/16)*(column[1]+column[2])
+  median = (column[3]/16)*column[0] + (column[4]/16)*0.69421
   
   return median
 
@@ -38,28 +51,28 @@ Maintenance = [hitungImpurity("Maintenance", "Low"), hitungImpurity("Maintenance
 Doors = [hitungImpurity("Doors", "3"), hitungImpurity("Doors", "4"), hitungImpurity("Doors", "More"), hitungLabelRow("Doors", "3"), hitungLabelRow("Doors", "4"), hitungLabelRow("Doors", "More")]
 Person = [hitungImpurity("Person", "2"), hitungImpurity("Person", "4"), hitungImpurity("Person", "More"), hitungLabelRow("Person", "2"), hitungLabelRow("Person", "4"), hitungLabelRow("Person", "More")]
 Lugage_boot = [hitungImpurity("Lugage_boot", "Small"), hitungImpurity("Lugage_boot", "Med"), hitungImpurity("Lugage_boot", "Big"), hitungLabelRow("Lugage_boot", "Small"), hitungLabelRow("Lugage_boot", "Med"), hitungLabelRow("Lugage_boot", "Big")]
-Safety = [hitungImpurity("Safety", "Low"), hitungImpurity("Safety", "Med"), hitungImpurity("Safety", "High"), hitungLabelRow("Safety", "Low"), hitungLabelRow("Safety", "Med"), hitungLabelRow("Safety", "High")]
+Safety = [hitungImpurity("Safety", "Low"), hitungImpurity("Safety", "Med"), hitungImpurity("Safety", "High"), hitungLabelRow("Safety", "Low"), hitungDuaLabelRow("Safety", "Med", "Safety", "High")]
 
 print(
-  "Impurity Buying \\ Low -->", Buying[0],
-  "\nImpurity Buying \\ MedHigh -->", (Buying[1] + Buying[2])/2,
-  "\nMedian Gini Buying -->", hitungMedianGini(Buying),
-  "\nGain Buying -->", hitungGain(hitungMedianGini(Buying)),
+  # "Impurity Buying \\ Low -->", Buying[0],
+  # "\nImpurity Buying \\ MedHigh -->", (Buying[1] + Buying[2])/2,
+  # "\nMedian Gini Buying -->", hitungMedianGini(Buying),
+  # "\nGain Buying -->", hitungGain(hitungMedianGini(Buying)),
 
-  "\n\nImpurity Maintenance \\ Low -->", Maintenance[0],
-  "\nImpurity Maintenance \\ MedHigh -->", (Maintenance[1] + Maintenance[2])/2,
-  "\nMedian Gini Maintenance -->", hitungMedianGini(Maintenance),
-  "\nGain Maintenance -->", hitungGain(hitungMedianGini(Maintenance)),
+  # "\n\nImpurity Maintenance \\ Low -->", Maintenance[0],
+  # "\nImpurity Maintenance \\ MedHigh -->", (Maintenance[1] + Maintenance[2])/2,
+  # "\nMedian Gini Maintenance -->", hitungMedianGini(Maintenance),
+  # "\nGain Maintenance -->", hitungGain(hitungMedianGini(Maintenance)),
 
-  "\n\nImpurity Doors \\ 3 -->", Doors[0],
-  "\nImpurity Doors \\ 4More -->", (Doors[1] + Doors[2])/2,
-  "\nMedian Gini Doors -->", hitungMedianGini(Doors),
-  "\nGain Doors -->", hitungGain(hitungMedianGini(Doors)),
+  # "\n\nImpurity Doors \\ 3 -->", Doors[0],
+  # "\nImpurity Doors \\ 4More -->", (Doors[1] + Doors[2])/2,
+  # "\nMedian Gini Doors -->", hitungMedianGini(Doors),
+  # "\nGain Doors -->", hitungGain(hitungMedianGini(Doors)),
 
-  "\n\nImpurity Person \\ 2 -->", Person[0],
-  "\nImpurity Person \\ 4More -->", (Person[1] + Person[2])/2,
-  "\nMedian Gini Person -->", hitungMedianGini(Person),
-  "\nGain Person -->", hitungGain(hitungMedianGini(Person)), 
+  # "\n\nImpurity Person \\ 2 -->", Person[0],
+  # "\nImpurity Person \\ 4More -->", (Person[1] + Person[2])/2,
+  # "\nMedian Gini Person -->", hitungMedianGini(Person),
+  # "\nGain Person -->", hitungGain(hitungMedianGini(Person)), 
 
   "\n\nImpurity Lugage_boot \\ Small -->", Lugage_boot[0],
   "\nImpurity Lugage_boot \\ MedBig -->", (Lugage_boot[1] + Lugage_boot[2])/2,

@@ -31,18 +31,23 @@ def giniIndex(variable):
 data = pd.read_csv("dbsample.csv")
 filter = data["Safety"]=="Med"
 hasil = data.loc[filter, "Evaluation"].tolist()
-hitungLabel.hitungLabel(hasil)
 
-unacc, acc, good, vgood = hitungLabel.a, hitungLabel.b, hitungLabel.c, hitungLabel.d
-total = hitungLabel.total
 
 data = pd.read_csv("dbsample.csv")
 filter = data["Safety"]=="High"
-hasil = data.loc[filter, "Evaluation"].tolist()
-hitungLabel.hitungLabel(hasil)
+hasil2 = data.loc[filter, "Evaluation"].tolist()
+hitungLabel.hitungLabel(hasil, hasil2)
+unacc, acc, good, vgood = hitungLabel.a, hitungLabel.b, hitungLabel.c, hitungLabel.d
+total = hitungLabel.total
 
-unacc2, acc2, good2, vgood2 = hitungLabel.a+unacc, hitungLabel.b+acc, hitungLabel.c+good, hitungLabel.d+vgood
-total2 = hitungLabel.total+total
-print(total2)
+print(total)
+print(unacc,acc,good,vgood)
+print(total/total-(unacc/total)**2-(acc/total)**2-(good/total)**2-(vgood/total)**2)
 
-print(1 - (unacc2/total2)**2 - (acc2/total2)**2 - (good2/total2)**2 - (vgood2/total2)**2)
+
+
+# unacc2, acc2, good2, vgood2 = hitungLabel.a+unacc, hitungLabel.b+acc, hitungLabel.c+good, hitungLabel.d+vgood
+# total2 = hitungLabel.total+total
+# print(total2)
+
+# print(1 - (unacc2/total2)**2 - (acc2/total2)**2 - (good2/total2)**2 - (vgood2/total2)**2)
