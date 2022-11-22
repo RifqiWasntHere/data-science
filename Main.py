@@ -76,8 +76,8 @@ print(
 #
 #Struktur decision tree
 tree.iterasi1()
-
-
+#
+#
 ###Iterasi Kedua###
 print("\n", "="*10,"Iterasi Kedua", "="*10, "\n")
 #
@@ -90,8 +90,8 @@ print("\nDecision tree :")
 #
 #Struktur decision tree
 tree.iterasi2()
-
-
+#
+#
 print("\n", "="*10,"Iterasi Ketiga", "="*10, "\n")
 # Mencari Gain dari Cabang Safety [Med, High] dan menjadikan kandidat
 # dengan Gain terbesar sebagai Cabang Kiri
@@ -117,9 +117,8 @@ tree.iterasi3()
 
 
 ###Iterasi Keempat###
-print("\n", "="*10,"Iterasi Keempat", "="*10)
+print("\n", "="*10,"Iterasi Keempat", "="*10, "\n")
 #
-
 #
 #List/Array Gini atribut
 Lugage_boot = [hitungGini.giniAtribut("Safety", "Med", "Lugage_boot", "Small"), hitungGini.giniAtribut("Safety", "Med", "Lugage_boot", "Med"), hitungGini.giniAtribut("Safety", "Med", "Lugage_boot", "Big")]
@@ -135,17 +134,30 @@ print(
   "\nImpurity Lugage_boot \\ MedBig -->", (Lugage_boot[1] + Lugage_boot[2])/2,
   "\nMedian Gini Lugage_boot -->", medianLugage,
   "\nGain Lugage -->", parent - medianLugage, 
-
-  #Safety tidak dihitung karena sudah menjadi parent dari iterasi keempat
-
+#
+#Safety tidak dihitung karena sudah menjadi parent dari iterasi keempat
+#
   "\n\nImpurity Safety \\ Low -->", 0,
   "\nImpurity Safety \\ MedHigh -->", 0,
   "\nMedian Gini Safety -->", 0,
   "\nGain Safety -->", 0,
-  #Dikarenakan Gain Cabang Small > MedBig, maka Cabang Small akan dijadikan
-  #sebagai cabang kiri
+#Dikarenakan Gain Cabang Small > MedBig, maka Cabang Small akan dijadikan
+#sebagai cabang kiri
   "\n\nDecision tree :"
   )
 #
 #Struktur decision tree
 tree.iterasi4()
+#
+#
+###Iterasi Kelima###
+# print("\n", "="*10,"Iterasi Kelima", "="*10)
+#
+#Dikarenakan pada lugage_boot tidak terdapat data Homogen, maka itu
+#label node akan ditentukan dengan nilai Label yang dominan
+#
+# filter = data["Safety"].tolist()
+# filter1 = data["Lugage_boot"].tolist()
+# filter2 = data["Evaluation"].tolist()
+# print("Data pada Lugage_boot: ") 
+# print(filter, filter1, filter2,  "\nLabel yang dominan : ", "\n Tidak ada.")
