@@ -2,7 +2,8 @@ import pandas as pd
 import hitungLabel
 import gini
 
-data = pd.read_csv("dbsample.csv")
+data = pd.read_csv("Paten\dbsample.csv")
+rule = ((data['Safety'] == 'Med') | (data['Safety'] == 'High'))
 
 def parent(column, row1, row2):
   filter = (data[column]==row1) | (data[column]==row2)
@@ -17,14 +18,14 @@ def parent(column, row1, row2):
 
 def impurity(column1, row1, column2, row2):
   if(column2 == 0):
-    filter = data[column1]==row1
+    filter = (data[column1]==row1) & rule
     where = data.loc[filter, "Evaluation"].tolist()
     hasil = gini.giniIndex(where, 0)
   else:
-    filter = data[column1]==row1
+    filter = (data[column1]==row1) & rule
     where = data.loc[filter, "Evaluation"].tolist()
 
-    filter = data[column2]==row2
+    filter = (data[column2]==row2) & rule
     where2 = data.loc[filter, "Evaluation"].tolist()
 
     hasil = gini.giniIndex(where, where2)

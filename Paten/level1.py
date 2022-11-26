@@ -2,7 +2,7 @@ import pandas as pd
 import hitungLabel
 import gini
 
-data = pd.read_csv("dbsample.csv")
+data = pd.read_csv("Paten\dbsample.csv")
 
 def impurity(column1, row1, column2, row2):
   if(column2 == 0):

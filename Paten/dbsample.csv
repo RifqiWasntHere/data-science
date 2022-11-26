@@ -1,0 +1,17 @@
+Buying,Maintenance,Doors,Person,Lugage_boot,Safety,Evaluation
+Low,Med,3,More,Big,Med,good
+Low,Med,3,More,Big,High,vgood
+Low,Med,4,2,Small,Low,unacc
+Low,Med,4,2,Small,Med,unacc
+Low,Med,4,More,Big,High,vgood
+Low,Med,More,2,Small,Low,unacc
+Low,Med,More,4,Small,Med,acc
+Low,Med,More,4,Small,High,good
+Low,Med,More,4,Med,Low,unacc
+Low,Med,More,4,Med,Med,good
+Low,Med,More,4,Med,High,vgood
+Low,Med,More,4,Big,Low,unacc
+Low,Med,More,4,Big,Med,good
+Low,Med,More,4,Big,High,vgood
+Low,Med,More,More,Small,Low,unacc
+Low,Med,More,More,Small,Med,acc

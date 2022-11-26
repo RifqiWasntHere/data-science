@@ -22,8 +22,8 @@ def iterasi3():
   node("Root", "root")
   node("Safety [Low] unacc", "left", parent = "root")
   node("Safety [Med,High]", "right", parent = "root")
-  node("Safety [Med]", "left2", parent ="right")
-  node("Safety [High]", "right2", parent ="right")
+  node("Safety [High ]", "left2", parent ="right")
+  node("Safety [Med ]", "right2", parent ="right")
   tree.show()
 
 def iterasi4():

@@ -1,7 +1,7 @@
 import pandas as pd
 import hitungLabel
 
-data = pd.read_csv("dbsample.csv")
+data = pd.read_csv("Paten\dbsample.csv")
 
 def parent():
 
