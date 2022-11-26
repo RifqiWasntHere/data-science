@@ -47,12 +47,10 @@ def giniAtribut(column1, row1, column2, row2):
   
   data = pd.read_csv("dbsample.csv")
 
-  filter = data[column1]==row1
-  row = (data.loc[filter, column2]==row2).tolist()
-  filter = data[column1]==row1
-  labelRow = data.loc[filter, "Evaluation"].tolist()
+  filter = ( data[column1] == row1 ) & ( data[column2] == row2 )
+  filtered = data.loc[filter, "Evaluation"].tolist()
 
-  hitungLabel.hitungLugage(row, labelRow)
+  hitungLabel.hitungLabel(filtered, 0)
 
   unacc, acc, good, vgood = hitungLabel.a, hitungLabel.b, hitungLabel.c, hitungLabel.d
   total = hitungLabel.total

@@ -1,6 +1,4 @@
 import pandas as pd
-from treelib import Tree
-from decimal import *
 import hitungGini
 import hitungLabel
 import tree
