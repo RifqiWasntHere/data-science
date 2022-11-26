@@ -105,7 +105,7 @@ def iterasi3():
   Doors = [impurity("Doors", "3", 0, 0),impurity("Doors", "4", "Doors", "More")]
   Person = [impurity("Person", "2", 0, 0),impurity("Person", "4", "Person", "More")]
   Lugage_boot = [impurity("Lugage_boot", "Small", 0, 0),impurity("Lugage_boot", "Med", "Lugage_boot", "Big")]
-  Safety = [impurity("Safety", "Low", 0, 0),impurity("Safety", "Med", "Safety", "High"), impurity("Safety", "Med", 0, 0), impurity("Safety", "High", 0, 0)]
+  Safety = [impurity("Safety", "Med", 0, 0),impurity("Safety", "High", 0, 0)]
   #
   parent = parent("Safety", "Med", "High")
   #
@@ -150,16 +150,15 @@ def iterasi3():
     "\nMedian Gini Lugage_boot -->", median[4],
     "\nGain Lugage_boot -->", gain[4],
 
-    "\n\nImpurity Safety \\ Low -->", Safety[0],
-    "\nImpurity Safety \\ MedHigh -->", Safety[1],
+    "\n\nImpurity Safety \\ Med -->", Safety[0],
+    "\nImpurity Safety \\ High -->", Safety[1],
     "\nMedian Gini Safety -->", median[5],
     "\nGain Safety -->", gain[5],
-
+    ###Catatan : Nilai yang tertera berbeda dengan yang ada di modul
+    ###Dikarenakan, Pada cabang anak kiri pada modul, terhitung LowHigh
+    ###Yang dimana tidak dapat dilakukan karena record low telah menjadi
+    ###Parent dari cabang ini / sudah tereliminasi
     "\n\nGain terbesar :", columns[gain.index(max(gain))],
-
-    "\nSafety Med vs High : "
-    "\nImpurity Safety \\ Med -->", Safety[2],
-    "\nImpurity Safety \\ High -->", Safety[2],
     
     "\n\nSafety akan dijadikan sebagai parent untuk node selanjutnya,"
     "\nDikarenakan impurity Safety adalah yang paling besar diantara semua atribut"
