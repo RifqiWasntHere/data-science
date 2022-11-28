@@ -351,10 +351,124 @@ def iterasi8():
   print("Dataset dari cabang Person [2] : \n")
   print(data.loc[filter])
   print(
-    "\nDikarenakan data dari cabang tersebut memiliki label homogen acc, \nmaka cabang tersebut dinyatakan sebagai leaf [good]"
+    "\nDikarenakan data dari cabang tersebut memiliki label homogen good, \nmaka cabang tersebut dinyatakan sebagai leaf [good]"
     )
   #
   print("\nDecision tree :")
   #
   #Struktur decision tree
   tree.iterasi8()
+  
+def iterasi9():
+  from level2 import parent, impurity, median
+  import tree
+  ###Iterasi Kesembilan###
+  print("\n", "="*10,"Iterasi Kesembilan", "="*10, "\n")
+  #
+  rule = (data['Safety'] == 'High')
+  # rule
+  #List/Array Gini atribut
+  Buying =[impurity("Buying", "Low", 0, rule),impurity("Buying", "Med", "High", rule)]
+  Maintenance = [impurity("Maintenance", "Low", 0, rule),impurity("Maintenance", "Med", "High", rule)]
+  Doors = [impurity("Doors", "3", 0, rule),impurity("Doors", "4", "More", rule)]
+  Person = [impurity("Person", "2", 0, rule),impurity("Person", "4", "More", rule)]
+  Lugage_boot = [impurity("Lugage_boot", "Small", 0, rule),impurity("Lugage_boot", "Med", "Big", rule)]
+  # Safety = [impurity("Safety", "Med", 0, rule),impurity("Safety", "High", 0, rule)]
+  #
+  parent = parent(rule)
+  #
+  median = [
+            median(Buying, "Buying", "Low", "Med", "High", rule),median(Maintenance, "Maintenance", "Low", "Med", "High", rule),
+            median(Doors, "Doors", "3", "4", "More", rule),median(Person, "Person", "2", "4", "More", rule),
+            median(Lugage_boot, "Lugage_boot", "Small", "Med", "Big", rule)
+            ]
+  #
+  gain = [
+          parent-median[0], parent-median[1], parent-median[2],
+          parent-median[3], parent-median[4]
+        ]
+  #Mencetak Hasil Perhitungan Iterasi Kesembilan
+  print(
+    "Gini Parent :",
+    parent,
+  )
+  print(
+    "\nImpurity Buying \\ Low -->", Buying[0],
+    "\nImpurity Buying \\ MedHigh -->", Buying[1],
+    "\nMedian Gini Buying -->", median[0],
+    "\nGain Buying -->", gain[0],
+
+    "\n\nImpurity Maintenance \\ Low -->", Maintenance[0],
+    "\nImpurity Maintenance \\ MedHigh -->", Maintenance[1],
+    "\nMedian Gini Maintenance -->", median[1],
+    "\nGain Maintenance -->", gain[1],
+
+    "\n\nImpurity Doors \\ 3 -->", Doors[0],
+    "\nImpurity Doors \\ 4More -->", Doors[1],
+    "\nMedian Gini Doors -->", median[2],
+    "\nGain Doors -->", gain[2],
+    
+    "\n\nImpurity Person \\ 2 -->", Person[0],
+    "\nImpurity Person \\ 4More -->", Person[1],
+    "\nMedian Gini Person -->", median[3],
+    "\nGain Person -->", gain[3],
+
+    "\n\nImpurity Lugage_boot \\ Small -->", Lugage_boot[0],
+    "\nImpurity Lugage_boot \\ MedBig -->", Lugage_boot[1],
+    "\nMedian Gini Lugage_boot -->", median[4],
+    "\nGain Lugage_boot -->", gain[4],
+
+    # "\n\nImpurity Safety \\ Med -->", Safety[0],
+    # "\nImpurity Safety \\ High -->", Safety[1],
+    # "\nMedian Gini Safety -->", median[5],
+    # "\nGain Safety -->", gain[5],
+    ###Catatan : Nilai yang tertera berbeda dengan yang ada di modul
+    ###Dikarenakan, Pada cabang anak kiri pada modul, terhitung LowHigh
+    ###Yang dimana tidak dapat dilakukan karena record low telah menjadi
+    ###Parent dari cabang ini / sudah tereliminasi
+    "\n\nGain terbesar :", columns[gain.index(max(gain))],
+    
+    "\n\Lugage akan dijadikan sebagai parent untuk node selanjutnya,"
+    "\nDikarenakan impurity Lugage adalah yang paling besar diantara semua atribut"
+    "\n\nDecision tree :"
+    )
+  #
+  #Struktur decision tree
+  tree.iterasi9()
+  #
+
+def iterasi10():
+  import tree
+  ###Iterasi Kesepuluh###
+  print("\n", "="*10,"Iterasi Kesepuluh", "="*10, "\n")
+  #
+  filter = (data["Safety"]=="High") & (data["Lugage_boot"]=="Small")
+  #
+  print("Dataset dari cabang Person [2] : \n")
+  print(data.loc[filter])
+  print(
+    "\nDikarenakan data dari cabang tersebut memiliki label homogen good, \nmaka cabang tersebut dinyatakan sebagai leaf [good]"
+    )
+  #
+  print("\nDecision tree :")
+  #
+  #Struktur decision tree
+  tree.iterasi10()
+
+def iterasi11():
+  import tree
+  ###Iterasi Kesebelas###
+  print("\n", "="*10,"Iterasi Kesepuluh", "="*10, "\n")
+  #
+  filter = (data["Safety"]=="High") & ((data["Lugage_boot"]=="Med") | (data["Lugage_boot"]=="Big"))
+  #
+  print("Dataset dari cabang Person [2] : \n")
+  print(data.loc[filter])
+  print(
+    "\nDikarenakan data dari cabang tersebut memiliki label homogen vgood, \nmaka cabang tersebut dinyatakan sebagai leaf [vgood]"
+    )
+  #
+  print("\nDecision tree :")
+  #
+  #Struktur decision tree
+  tree.iterasi11()

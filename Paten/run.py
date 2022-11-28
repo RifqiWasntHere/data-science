@@ -8,3 +8,6 @@ import main
 # main.iterasi6()
 # main.iterasi7()
 # main.iterasi8()
+# main.iterasi9()
+# main.iterasi10()
+# main.iterasi11()
