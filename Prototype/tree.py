@@ -37,3 +37,4 @@ def iterasi4():
   node("Lugage [Small]", "left3", parent ="left2")
   node("Lugage [Med,High]", "right3", parent ="left2")
   tree.show()
+
