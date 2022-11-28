@@ -4,16 +4,16 @@ import gini
 
 data = pd.read_csv("Paten\dbsample.csv")
 
-def impurity(column1, row1, column2, row2):
-  if(column2 == 0):
-    filter = data[column1]==row1
+def impurity(column, row1, row2):
+  if(row2 == 0):
+    filter = data[column]==row1
     where = data.loc[filter, "Evaluation"].tolist()
     hasil = gini.giniIndex(where, 0)
   else:
-    filter = data[column1]==row1
+    filter = data[column]==row1
     where = data.loc[filter, "Evaluation"].tolist()
 
-    filter = data[column2]==row2
+    filter = data[column]==row2
     where2 = data.loc[filter, "Evaluation"].tolist()
 
     hasil = gini.giniIndex(where, where2)
